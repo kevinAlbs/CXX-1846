@@ -1,0 +1,7 @@
+cmake_minimum_required (VERSION 2.6)
+add_executable(repro repro.cpp)
+find_package (libmongocxx REQUIRED)
+find_package (Boost 1.56.0 REQUIRED)
+target_include_directories(repro PRIVATE ${LIBMONGOCXX_INCLUDE_DIRS})
+target_link_libraries (repro Boost::boost ${LIBMONGOCXX_LIBRARIES})
+target_compile_definitions (repro PRIVATE ${LIBMONGOCXX_DEFINITIONS})
